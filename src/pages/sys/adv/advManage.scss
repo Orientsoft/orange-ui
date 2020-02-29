@@ -1,0 +1,33 @@
+.adv-manage{
+    .adv-box{
+        margin-bottom: 16px;
+        .wel{
+            width: 375px;
+            height: 667px;
+        }
+        .nor{
+            height: 375px;
+            width: 667px;  
+        }
+        .img-box{
+            position: relative;
+            background: #999;
+            .adv-img{
+                // width: auto;
+                // height: auto;
+                // max-width: 100%;
+                // max-height: 100%;
+                width: 667px;  
+                height: 100%;
+            }
+        }
+        .jump{
+            font-size: 24px;
+        }
+        .action{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    }
+}

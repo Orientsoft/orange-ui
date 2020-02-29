@@ -1,0 +1,25 @@
+.bl-sys-title{
+    color: rgba(255,255,255,.8);
+    font-size: 20px;
+    text-align: center;
+    height: 49px;
+    padding: 0 15px;
+    line-height: 60px;
+}
+.bl-logo{
+    height: 44px;
+    margin: 4px;
+}
+
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+.nav-bar{
+    .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active{
+        border-top: 3px solid #1890ff;
+    }
+}

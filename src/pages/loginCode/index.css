@@ -1,0 +1,22 @@
+.login-box {
+    display: flex;
+    justify-content: center;
+}
+.login-form {
+    max-width: 900px;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+  .sms-timer{
+    display: inline-block;
+    height: 16px;
+    padding: 0 8px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3da8f5;
+  }

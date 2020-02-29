@@ -1,0 +1,37 @@
+.appointment-detail {
+    font-size: 24px;
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    .item {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 15px 0;
+      border-top: 1px solid #eeeff3;
+      .title {
+        width: 150px;
+        margin-right: 30px;
+        color: #999;
+        text-align: right;
+      }
+      .value {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+      }
+    }
+  }
+  li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+
+}
