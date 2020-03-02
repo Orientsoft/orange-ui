@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[34],{390:function(t,n,e){"use strict";e.r(n),e.d(n,"getUnauthUserList",(function(){return u})),e.d(n,"checkUnauthUser",(function(){return r}));var c=e(68);function u(t){return Object(c.a)("get","/user?page=".concat(t,"&limit=10&status=\u5f85\u5ba1\u6838"))}function r(t,n){return Object(c.a)("put","/cert/".concat(t),n)}}}]);
+//# sourceMappingURL=34.7bb98ee9.chunk.js.map

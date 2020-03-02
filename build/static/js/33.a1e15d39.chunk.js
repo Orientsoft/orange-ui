@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[33],{388:function(t,e,n){"use strict";n.r(e),n.d(e,"getCheckNewsList",(function(){return i})),n.d(e,"checkNews",(function(){return r}));var c=n(68);function i(t){return Object(c.a)("get","/news/operation?page=".concat(t,"&limit=10"))}function r(t){return Object(c.a)("put","/news/check",t)}}}]);
+//# sourceMappingURL=33.a1e15d39.chunk.js.map
