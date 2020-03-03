@@ -1,2 +1,0 @@
-(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[38],{394:function(t,e,n){"use strict";n.r(e),n.d(e,"getOrderList",(function(){return c})),n.d(e,"getOrderDetail",(function(){return i}));var r=n(68);function c(t){return Object(r.a)("get","/order/admin?page=".concat(t,"&limit=10"))}function i(t){return Object(r.a)("get","/order/appointment/".concat(t))}}}]);
-//# sourceMappingURL=38.38da44df.chunk.js.map

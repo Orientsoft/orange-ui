@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[44],{400:function(t,n,e){"use strict";e.r(n),e.d(n,"getAdvList",(function(){return u})),e.d(n,"addAdv",(function(){return r})),e.d(n,"editAdv",(function(){return d})),e.d(n,"deleteAdv",(function(){return o}));var c=e(69);function u(t){return Object(c.a)("get","/adv?location=".concat(t))}function r(t){return Object(c.a)("post","/adv",t)}function d(t,n){return Object(c.a)("put","/adv/".concat(t),n)}function o(t){return Object(c.a)("delete","/adv/".concat(t))}}}]);
+//# sourceMappingURL=44.25343d09.chunk.js.map

@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[39],{393:function(t,n,e){"use strict";e.r(n),e.d(n,"getAppointList",(function(){return p}));var i=e(69);function p(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:1;return Object(i.a)("get","/appointment/hospital?page=".concat(t,"&limit=10"))}}}]);
+//# sourceMappingURL=39.630e644e.chunk.js.map

@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[47],{403:function(t,e,n){"use strict";n.r(e),n.d(e,"getUserList",(function(){return c}));var s=n(69);function c(t){return Object(s.a)("get","/user?page=".concat(t,"&limit=10"))}}}]);
+//# sourceMappingURL=47.b56e0ef1.chunk.js.map

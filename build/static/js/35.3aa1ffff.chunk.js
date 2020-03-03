@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[35],{389:function(t,e,n){"use strict";n.r(e),n.d(e,"getCheckHospitalList",(function(){return i})),n.d(e,"passCheck",(function(){return r})),n.d(e,"rejectCheck",(function(){return u}));var c=n(69);function i(t){return Object(c.a)("get","/hospital/operation?page=".concat(t,"&limit=10"))}function r(t){return Object(c.a)("put","/hospital/check",t)}function u(t){return Object(c.a)("put","/hospital/check",t)}}}]);
+//# sourceMappingURL=35.3aa1ffff.chunk.js.map

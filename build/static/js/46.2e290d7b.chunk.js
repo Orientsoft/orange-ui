@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[46],{381:function(t,e,n){"use strict";n.r(e),n.d(e,"getLabels",(function(){return a})),n.d(e,"addLabels",(function(){return r})),n.d(e,"deleteLabels",(function(){return u}));var c=n(69);function a(t){return Object(c.a)("get","/tag?type=".concat(t))}function r(t){return Object(c.a)("post","/tag",t)}function u(t){return Object(c.a)("delete","/tag/".concat(t))}}}]);
+//# sourceMappingURL=46.2e290d7b.chunk.js.map
