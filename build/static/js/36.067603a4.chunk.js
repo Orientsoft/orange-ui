@@ -1,2 +1,0 @@
-(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[36],{391:function(t,e,r){"use strict";r.r(e),r.d(e,"getAppointList",(function(){return o})),r.d(e,"orderRegister",(function(){return i})),r.d(e,"orderCase",(function(){return c}));var n=r(68);function o(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:1;return Object(n.a)("get","/order/hospital?page=".concat(t,"&limit=10"))}function i(t){return Object(n.a)("post","/order/register",t)}function c(t){return Object(n.a)("post","/order/case",t)}}}]);
-//# sourceMappingURL=36.067603a4.chunk.js.map

@@ -33,9 +33,9 @@ export default class CommonArticle extends React.Component {
       initKeys: ["logo", "skilled"],
       formCfg: [
         {
-          label: "名字",
+          label: "标题",
           key: "name",
-          rules: [{ required: true, message: "请输入名字!" }],
+          rules: [{ required: true, message: "请输入标题!" }],
           type: "input"
         },
         {
@@ -207,7 +207,7 @@ export default class CommonArticle extends React.Component {
   render() {
     const tmp = [
       {
-        title: "名字",
+        title: "标题",
         dataIndex: "name",
         key: "name",
         align: "center"

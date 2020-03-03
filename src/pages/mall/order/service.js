@@ -7,3 +7,19 @@ export function getOrderList(page) {
 export function getOrderDetail(id) {
     return Fetch('get', `/order/appointment/${id}`);
 }
+
+export function getComment(id) {
+    return Fetch('get', `/order/comment/${id}`);
+}
+
+export function answerComment(data) {
+    return Fetch('post', '/comment/answer', data);
+}
+
+export function setCommentSpecial(data) {
+    return Fetch('post', '/comment/operator', data);
+}
+
+export function cancelCommentSpecial(data) {
+    return Fetch('delete', '/comment/operator', data);
+}

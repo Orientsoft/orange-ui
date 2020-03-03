@@ -5,6 +5,11 @@ import FormModal from "../../../components/formModal";
 import PreviewModal from "../../../components/previewModal";
 import { getHospitalNewsList, addNews, editNews, getHospitalList, getLabelList } from "../../article/service";
 
+const statusCfg = {
+  1: '通过',
+  0: '驳回',
+};
+
 export default class Home extends React.Component {
   constructor(p) {
     super(p);
@@ -95,8 +100,13 @@ export default class Home extends React.Component {
       .then(res => {
         if (res.status === 1) {
           const dataSource = res.data.map(v => {
+            // 有修改内容时，只显示修改内容
             if(v.operation){
-              return { ...v, ...v.operation };
+              return { ...v, ...v.operation }
+            }
+            // 审核失败，只显示审核信息
+            if(v.last_operation){
+              return { ...v, ...v.last_operation }
             }
             return v;
           });
@@ -210,7 +220,8 @@ export default class Home extends React.Component {
         title: "新闻简介",
         dataIndex: "desc",
         key: "desc",
-        align: "center"
+        align: "center",
+        // width: 400,
       },
       {
         title: "标签",
@@ -253,6 +264,30 @@ export default class Home extends React.Component {
         }
       },
       {
+        title: "状态",
+        dataIndex: "status",
+        key: "status",
+        align: "center",
+        render: (v, record) => {
+          if (record.operation) {
+            return '待审核';
+          }
+          return statusCfg[v] || '无';
+        }
+      },
+      {
+        title: "驳回原因",
+        dataIndex: "reason",
+        key: "reason",
+        align: "center",
+        render: (v, record) => {
+          if (record.operation) {
+            return '无';
+          }
+          return v || '无';
+        }
+      },
+      {
         title: "操作",
         dataIndex: "action",
         key: "action",
@@ -261,7 +296,7 @@ export default class Home extends React.Component {
         render: (v, record) => {
           return (
             <span>
-              <Button type="primary" style={{ marginRight: "16px" }} onClick={this.openEdit(record)}>
+              <Button type="primary"  onClick={this.openEdit(record)}>
                 修改
               </Button>
               {/* <Popconfirm title="确定删除？"><Button type="danger" onClick={this.onDelete(record.id)}>

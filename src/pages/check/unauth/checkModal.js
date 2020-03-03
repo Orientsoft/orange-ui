@@ -31,7 +31,7 @@ export default class CheckModal extends React.Component {
             </li>
             <li className='item'>
               <div className='title'>授权书:</div>
-              <div className='value'><img style={{ height: '400px' }} alt="" src={selectRow.doc && selectRow.doc[0]}/></div>
+              <div className='value'><img style={{ height: '400px' }} alt="" src={selectRow.doc && selectRow.doc[1]}/></div>
             </li>
           </ul>
           </div>

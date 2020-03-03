@@ -152,5 +152,16 @@ export function renderTime(v){
   if(!v){
     return null;
   }
-  return moment(v).format("YYYY-MM-DD HH:mm:ss");
+  // return format(new Date(v), "yyyy-MM-dd HH:mm:ss");
+  // 后端都是秒时间
+  return moment(v * 1000).format("YYYY-MM-DD HH:mm:ss");
+}
+
+export function renderDate(v){
+  if(!v){
+    return null;
+  }
+  // return format(new Date(v), "yyyy-MM-dd HH:mm:ss");
+  // 后端都是秒时间
+  return moment(v * 1000).format("YYYY-MM-DD");
 }

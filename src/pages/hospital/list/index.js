@@ -6,6 +6,11 @@ import PreviewModal from "../../../components/previewModal";
 import ToolmanModal from './toolmanModal';
 import { getHospitalList, editHospital, getLabelList } from "./service";
 
+const statusCfg = {
+  1: '通过',
+  0: '驳回',
+};
+
 export default class Home extends React.Component {
   constructor(p) {
     super(p);
@@ -145,8 +150,13 @@ export default class Home extends React.Component {
       .then(res => {
         if (res.status === 1) {
           const dataSource = res.data.map(v => {
+            // 有修改内容时，只显示修改内容
             if(v.operation){
               return { ...v, ...v.operation }
+            }
+            // 审核失败，只显示审核信息
+            if(v.last_operation){
+              return { ...v, ...v.last_operation }
             }
             return v;
           });
@@ -197,6 +207,10 @@ export default class Home extends React.Component {
   };
   onSubmit = v => {
     console.log("v", v);
+    if(!v.latitude){
+      message.error('请设置经纬度');
+      return;
+    }
     if (!v.department){
       message.error('请添加特色科室');
       return;
@@ -345,6 +359,30 @@ export default class Home extends React.Component {
         dataIndex: "address",
         key: "address",
         align: "center"
+      },
+      {
+        title: "状态",
+        dataIndex: "status",
+        key: "status",
+        align: "center",
+        render: (v, record) => {
+          if (record.operation) {
+            return '待审核';
+          }
+          return statusCfg[v] || '无';
+        }
+      },
+      {
+        title: "驳回原因",
+        dataIndex: "reason",
+        key: "reason",
+        align: "center",
+        render: (v, record) => {
+          if (record.operation) {
+            return '无';
+          }
+          return v || '无';
+        }
       },
       {
         title: "操作",

@@ -65,7 +65,25 @@ export default class Home extends React.Component {
         render: v => {
           return v.map(value => roleCfg[value]).join('、')
         }
-      }
+      },
+      {
+        title: "管理医院",
+        dataIndex: "admin",
+        key: "admin",
+        align: "center",
+        render: v => {
+          return v ? v.join('、') : '';
+        }
+      },
+      {
+        title: "收费医院",
+        dataIndex: "toolman",
+        key: "toolman",
+        align: "center",
+        render: v => {
+          return v ? v.join('、') : '';
+        }
+      },
     ];
     return (
       <div>
