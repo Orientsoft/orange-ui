@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[36],{390:function(t,e,n){"use strict";n.r(e),n.d(e,"getCheckNewsList",(function(){return r})),n.d(e,"checkNews",(function(){return u})),n.d(e,"getNewsInfo",(function(){return i}));var c=n(69);function r(t){return Object(c.a)("get","/news/operation?page=".concat(t,"&limit=10"))}function u(t){return Object(c.a)("put","/news/check",t)}function i(t){return Object(c.a)("get","/news/".concat(t))}}}]);
+//# sourceMappingURL=36.a1b6f4ac.chunk.js.map

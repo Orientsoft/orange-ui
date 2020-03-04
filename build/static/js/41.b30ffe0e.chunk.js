@@ -1,0 +1,2 @@
+(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[41],{395:function(t,e,n){"use strict";n.r(e),n.d(e,"getCommentList",(function(){return o})),n.d(e,"cancelCommentSpecial",(function(){return r}));var c=n(69);function o(t){return Object(c.a)("get","/product/comment?page=".concat(t,"&limit=10"))}function r(t){return Object(c.a)("delete","/comment/operator",t)}}}]);
+//# sourceMappingURL=41.b30ffe0e.chunk.js.map

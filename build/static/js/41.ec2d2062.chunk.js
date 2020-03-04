@@ -1,2 +1,0 @@
-(this.webpackJsonptemp=this.webpackJsonptemp||[]).push([[41],{395:function(t,e,n){"use strict";n.r(e),n.d(e,"getCommentList",(function(){return i}));var c=n(69);function i(t){return Object(c.a)("get","/product/comment?page=".concat(t,"&limit=10"))}}}]);
-//# sourceMappingURL=41.ec2d2062.chunk.js.map
