@@ -8,7 +8,6 @@ import {
   getOrderDetail,
   getComment,
   answerComment,
-  cancelCommentSpecial,
   setCommentSpecial
 } from "./service";
 import { renderTime } from "../../../utils/util";
@@ -16,9 +15,12 @@ import { renderTime } from "../../../utils/util";
 const statusCfg = {
   0: "待支付",
   1: "待预约",
-  2: "待使用",
-  3: "待评价",
-  4: "已完成"
+  2: "待挂号",
+  3: "待使用",
+  4: "待评价",
+  5: "已完成",
+  6: "已关闭",
+  7: "已退款",
 };
 
 const payCfg = {
@@ -127,30 +129,15 @@ export default class Order extends React.Component {
       });
   };
   changeSpecialComment = () => {
-    if (this.state.commentData.is_show) {
-      // 取消精选评论
-      cancelCommentSpecial({ orderid: this.state.selectRow.id })
-        .then(res => {
-          if (res.status === 1) {
-            this.setState({
-              commentData: { ...this.state.commentData, is_show: 0 }
-            });
-            return;
-          }
-          message.error(`操作失败:${res.message}`);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-      return;
-    }
     // 设置精选评论
     setCommentSpecial({ orderid: this.state.selectRow.id })
       .then(res => {
         if (res.status === 1) {
+          message.success('设置成功');
           this.setState({
             commentData: { ...this.state.commentData, is_show: 1 }
           });
+
           return;
         }
         message.error(`操作失败:${res.message}`);

@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, message, Tag } from "antd";
 import ComTable from "../../../components/comTable";
-import RejectModal from '../../../components/rejectModal';
-import PreviewModal from '../../../components/previewModal';
-import { getCheckHospitalList, passCheck, rejectCheck } from './service';
+import RejectModal from "../../../components/rejectModal";
+import PreviewModal from "../../../components/previewModal";
+import { getCheckHospitalList, passCheck, rejectCheck, getHospitalInfo } from "./service";
 
 export default class Home extends React.Component {
   constructor(p) {
@@ -16,7 +16,7 @@ export default class Home extends React.Component {
       current: 1,
       total: 0,
       dataSource: [],
-      renderMode: '',
+      renderMode: ""
     };
   }
   componentDidMount() {
@@ -27,8 +27,8 @@ export default class Home extends React.Component {
       .then(res => {
         if (res.status === 1) {
           const dataSource = res.data.map(v => {
-            if(v.operation){
-              return { ...v, ...v.operation }
+            if (v.operation) {
+              return { ...v, ...v.operation };
             }
             return v;
           });
@@ -42,52 +42,89 @@ export default class Home extends React.Component {
       });
   };
   onChangePage = page => {
-    this.setState({
-      current: page,
-    }, () => {
-      this.getPageData();
-    });
+    this.setState(
+      {
+        current: page
+      },
+      () => {
+        this.getPageData();
+      }
+    );
   };
-  showRejectModal = (record) => () => {
+  showRejectModal = record => () => {
     this.setState({ visible: true, selectRow: record });
-  }
+  };
   onCancel = () => {
     this.setState({
-      visible: false,
+      visible: false
     });
   };
   handleOk = v => {
     console.log("v", v);
-    rejectCheck({ id: this.state.selectRow.id, status: 0, reason: v, })
-    .then(res => {
-      if (res.status === 1) {
-        message.success('操作成功');
-        this.onCancel();
-        this.getPageData();
-        return;
-      }
-      message.error('操作失败');
-    })
-    .catch(e => {
-      console.log(e);
-    });
+    rejectCheck({ id: this.state.selectRow.id, status: 0, reason: v })
+      .then(res => {
+        if (res.status === 1) {
+          message.success("操作成功");
+          this.onCancel();
+          this.getPageData();
+          return;
+        }
+        message.error("操作失败");
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
-  onPassCheck = (id) => () => {
-    passCheck({ id, status: 1, reason: '' })
-    .then(res => {
-      if (res.status === 1) {
-        message.success('操作成功');
-        this.getPageData();
+  onPassCheck = id => () => {
+    passCheck({ id, status: 1, reason: "" })
+      .then(res => {
+        if (res.status === 1) {
+          message.success("操作成功");
+          this.getPageData();
+          return;
+        }
+        message.error("操作失败");
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+  showContentPreview = (id, draft) => () => {
+    this.setState({
+      previewVisible: true,
+      renderMode: draft,
+    });
+    getHospitalInfo(id)
+    .then((res) => {
+      if(res.status === 1){
+        let previewImage = res.data.content;
+        if(res.data.operation && res.data.operation.content){
+          previewImage = res.data.operation.content;
+        }
+        console.log('previewImage', previewImage);
+        this.setState({
+          previewVisible: true,
+          previewImage,
+          renderMode: draft,
+        });
         return;
       }
-      message.error('操作失败');
+      this.setState({
+        previewVisible: true,
+        previewImage: '',
+        renderMode: draft,
+      });
     })
-    .catch(e => {
+    .catch((e) => {
       console.log(e);
-    });
+    })
   }
   showPreview = (url, draft) => () => {
-    this.setState({ previewVisible: true, previewImage: url, renderMode: draft });
+    this.setState({
+      previewVisible: true,
+      previewImage: url,
+      renderMode: draft
+    });
   };
   previewHandleCancel = () => {
     this.setState({ previewVisible: false, previewImage: "" });
@@ -124,9 +161,14 @@ export default class Home extends React.Component {
         dataIndex: "content",
         key: "content",
         align: "center",
-        render: text => {
+        render: (text, record) => {
           return (
-            <span className="canClick" onClick={this.showPreview(text, 'draft')}>详情</span>
+            <span
+              className="canClick"
+              onClick={this.showContentPreview(record.id, "draft")}
+            >
+              详情
+            </span>
           );
         }
       },
@@ -139,7 +181,7 @@ export default class Home extends React.Component {
           if (!v) {
             return null;
           }
-          return v.join('、');
+          return v.join("、");
         }
       },
       {
@@ -157,7 +199,7 @@ export default class Home extends React.Component {
           if (!v) {
             return null;
           }
-          return v.join('、');
+          return v.join("、");
         }
         // render: v => {
         //   return this.renderTag(v);
@@ -219,8 +261,16 @@ export default class Home extends React.Component {
         render: (v, record) => {
           return (
             <span>
-              <Button type='primary' style={{ marginRight: '16px' }} onClick={this.onPassCheck(record.id)}>通过</Button>
-              <Button type='danger' onClick={this.showRejectModal(record)}>驳回</Button>
+              <Button
+                type="primary"
+                style={{ marginRight: "16px" }}
+                onClick={this.onPassCheck(record.id)}
+              >
+                通过
+              </Button>
+              <Button type="danger" onClick={this.showRejectModal(record)}>
+                驳回
+              </Button>
             </span>
           );
         }
@@ -236,12 +286,12 @@ export default class Home extends React.Component {
           onChangePage={this.onChangePage}
         />
         <RejectModal
-        title="请填写驳回原因"
-        visible={this.state.visible}
-        onCancel={this.onCancel}
-        handleOk={this.handleOk} 
+          title="请填写驳回原因"
+          visible={this.state.visible}
+          onCancel={this.onCancel}
+          handleOk={this.handleOk}
         />
-                <PreviewModal
+        <PreviewModal
           previewVisible={this.state.previewVisible}
           previewImage={this.state.previewImage}
           handleCancel={this.previewHandleCancel}

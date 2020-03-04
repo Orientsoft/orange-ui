@@ -8,7 +8,8 @@ import {
   deleteArticleList,
   addArticleList,
   editArticleList,
-  getLabelList
+  getLabelList,
+  getArticleInfo,
 } from "../service";
 
 const typeCfg = {
@@ -204,6 +205,28 @@ export default class CommonArticle extends React.Component {
   previewHandleCancel = () => {
     this.setState({ previewVisible: false, previewImage: "" });
   };
+  showContentPreview = (id, draft) => () => {
+    this.setState({ previewVisible: true, renderMode: draft, });
+    getArticleInfo(this.props.type, id)
+    .then((res) => {
+      if(res.status === 1){
+        this.setState({
+          previewVisible: true,
+          previewImage: res.data.content,
+          renderMode: draft,
+        });
+        return;
+      }
+      this.setState({
+        previewVisible: true,
+        previewImage: '',
+        renderMode: draft,
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+  }
   render() {
     const tmp = [
       {
@@ -252,11 +275,11 @@ export default class CommonArticle extends React.Component {
         dataIndex: "content",
         key: "content",
         align: "center",
-        render: text => {
+        render: (text, record) => {
           return (
             <span
               className="canClick"
-              onClick={this.showPreview(text, "draft")}
+              onClick={this.showContentPreview(record.id, "draft")}
             >
               详情
             </span>

@@ -3,7 +3,7 @@ import { Button, message } from "antd";
 import ComTable from "../../../components/comTable";
 import RejectModal from '../../../components/rejectModal';
 import PreviewModal from "../../../components/previewModal";
-import { getCheckNewsList, checkNews } from './service';
+import { getCheckNewsList, checkNews, getNewsInfo } from './service';
 
 export default class Home extends React.Component {
   constructor(p) {
@@ -92,6 +92,32 @@ export default class Home extends React.Component {
   previewHandleCancel = () => {
     this.setState({ previewVisible: false, previewImage: "" });
   };
+  showContentPreview = (id, draft) => () => {
+    this.setState({ previewVisible: true, renderMode: draft, });
+    getNewsInfo(id)
+    .then((res) => {
+      if(res.status === 1){
+        let previewImage = res.data.content;
+        if(res.data.operation && res.data.operation.content){
+          previewImage = res.data.operation.content;
+        }
+        this.setState({
+          previewVisible: true,
+          previewImage,
+          renderMode: draft,
+        });
+        return;
+      }
+      this.setState({
+        previewVisible: true,
+        previewImage: '',
+        renderMode: draft,
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+  }
   render() {
     const columns = [
       {
@@ -149,9 +175,9 @@ export default class Home extends React.Component {
         dataIndex: "content",
         key: "content",
         align: "center",
-        render: text => {
+        render: (t, record) => {
           return (
-            <span className="canClick" onClick={this.showPreview(text, 'draft')}>详情</span>
+            <span className="canClick" onClick={this.showContentPreview(record.id, 'draft')}>详情</span>
           );
         }
       },

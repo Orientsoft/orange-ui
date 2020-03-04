@@ -7,3 +7,7 @@ export function getCheckNewsList(page) {
 export function checkNews(data) {
     return Fetch('put', '/news/check', data);
 }
+
+export function getNewsInfo(id) {
+    return Fetch('get', `/news/${id}`);
+}

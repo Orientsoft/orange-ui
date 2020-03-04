@@ -8,6 +8,10 @@ export function getArticleList(type, page) {
     return Fetch('get', `/${type}?page=${page}&limit=10`);
 }
 
+export function getArticleInfo(type, id) {
+    return Fetch('get', `/${type}/${id}`);
+}
+
 export function addArticleList(type, data) {
     return Fetch('post', `/${type}`, data);
 }
@@ -22,6 +26,10 @@ export function deleteArticleList(type, id) {
 
 export function getPlatformNewsList(page) {
     return Fetch('get', `/news?page=${page}&limit=10`);
+}
+
+export function getNewsInfo(id) {
+    return Fetch('get', `/news/${id}`);
 }
 
 export function getHospitalNewsList(page) {

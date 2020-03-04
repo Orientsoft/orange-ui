@@ -1,7 +1,8 @@
 import React from "react";
+import { Button, message } from 'antd';
 import ComTable from "../../../components/comTable";
 import PreviewModal from "../../../components/previewModal";
-import { getCommentList } from "./service";
+import { getCommentList, cancelCommentSpecial } from "./service";
 import { renderTime } from "../../../utils/util";
 
 export default class Comment extends React.Component {
@@ -47,6 +48,20 @@ export default class Comment extends React.Component {
   previewHandleCancel = () => {
     this.setState({ previewVisible: false, previewImage: "" });
   };
+  deleteComment = (id) => () => {
+      cancelCommentSpecial({ commentid: id })
+        .then(res => {
+          if (res.status === 1) {
+            const dataSource = this.state.dataSource.filter(v => v.id !== id);
+            this.setState({ dataSource });
+            return;
+          }
+          message.error(`操作失败:${res.message}`);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+  }
   render() {
     const columns = [
       {
@@ -79,6 +94,12 @@ export default class Comment extends React.Component {
         align: "center"
       },
       {
+        title: "评论",
+        dataIndex: "comment",
+        key: "comment",
+        align: "center"
+      },
+      {
         title: "评论时间",
         dataIndex: "commentAt",
         key: "commentAt",
@@ -97,6 +118,25 @@ export default class Comment extends React.Component {
         key: "answerAt",
         align: "center",
         render: renderTime
+      },
+      {
+        title: "操作",
+        dataIndex: "action",
+        key: "action",
+        align: "center",
+        width: 100,
+        render: (v, record) => {
+          return (
+            <span>
+              <Button
+                type="primary"
+                onClick={this.deleteComment(record.id)}
+              >
+                删除
+              </Button>
+            </span>
+          );
+        }
       }
     ];
     return (

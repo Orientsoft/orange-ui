@@ -11,3 +11,7 @@ export function passCheck(data) {
 export function rejectCheck(data) {
     return Fetch('put', '/hospital/check', data);
 }
+
+export function getHospitalInfo(id) {
+    return Fetch('get', `/hospital/${id}`);
+}

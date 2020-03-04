@@ -72,6 +72,12 @@ export default class Home extends React.Component {
         key: "name",
         align: "center"
       },
+      {
+        title: "预约内容",
+        dataIndex: "content",
+        key: "content",
+        align: "center"
+      },
       // {
       //   title: "门店",
       //   dataIndex: "hospital",
@@ -86,9 +92,9 @@ export default class Home extends React.Component {
       },
     
       {
-        title: "预约时间",
-        dataIndex: "orderAt",
-        key: "orderAt",
+        title: "提交时间",
+        dataIndex: "createdAt",
+        key: "createdAt",
         align: "center"
       },
       {
@@ -101,7 +107,7 @@ export default class Home extends React.Component {
         title: "指派医院",
         dataIndex: "hospName",
         key: "hospName",
-        align: "center"
+        align: "center",
       },
       {
         title: "状态",

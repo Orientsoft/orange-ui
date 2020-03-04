@@ -83,9 +83,14 @@ export default class CommentModal extends React.Component {
             )}
 
             <Row style={{ marginTop: "16px" }}>
-              <Button type="primary" onClick={this.props.changeSpecialComment}>
-                {commentData.is_show ? "取消精选评论" : "设置为精选评论"}
-              </Button>
+              {
+                !commentData.is_show && (
+                  <Button type="primary" onClick={this.props.changeSpecialComment}>
+                  设置为精选评论
+                  </Button>
+                )
+              }
+
               {!commentData.answer && (
                 <Button
                   type="primary"

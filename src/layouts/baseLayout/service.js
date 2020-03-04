@@ -148,19 +148,19 @@ export function apiGetMenu(role = []){
             auth: 4,
         },
         {
-            id: 16,
-            pid: 15,
-            name: '医院管理',
-            path: '/sys/hospitalList',
-            component: 'sys/hospitalList',
-            auth: 4,
-        },
-        {
             id: 17,
             pid: 15,
             name: '用户管理',
             path: '/sys/user',
             component: 'sys/user',
+            auth: 4,
+        },
+        {
+            id: 16,
+            pid: 15,
+            name: '医院管理',
+            path: '/sys/hospitalList',
+            component: 'sys/hospitalList',
             auth: 4,
         },
         {

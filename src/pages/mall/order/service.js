@@ -19,7 +19,3 @@ export function answerComment(data) {
 export function setCommentSpecial(data) {
     return Fetch('post', '/comment/operator', data);
 }
-
-export function cancelCommentSpecial(data) {
-    return Fetch('delete', '/comment/operator', data);
-}
